@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "sleep-tracker-frontend",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/emilyaviva/sleep-tracker-frontend",
+  "author": {
+    "name": "Emily Aviva Kapor-Mater",
+    "email": "emily@emilyaviva.com",
+    "url": "https://emilyaviva.com"
+  },
+  "license": "ISC",
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "lint": "standard --fix | snazzy"
+  },
+  "devDependencies": {
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.1"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "^3.2.0"
+  }
+}
