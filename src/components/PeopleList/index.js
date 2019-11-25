@@ -5,6 +5,7 @@ import './PeopleList.css'
 import PersonSummary from '../PersonSummary'
 
 function PeopleList () {
+  const [loading, setLoading] = useState(false)
   const [people, setPeople] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -12,10 +13,13 @@ function PeopleList () {
 
   const getPeople = async () => {
     try {
+      setLoading(true)
       const response = await axios.get('http://localhost:3001/people')
       setPeople(response.data)
     } catch (e) {
       setErrorMessage(e.message)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -37,6 +41,7 @@ function PeopleList () {
   return (
     <>
       <h3>All People</h3>
+      {loading && <div>Loading…</div>}
       <table className='PeopleList'>
         <thead>
           <tr>
