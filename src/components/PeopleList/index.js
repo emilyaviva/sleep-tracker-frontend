@@ -11,8 +11,12 @@ function PeopleList () {
   useEffect(() => { getPeople() }, [])
 
   const getPeople = async () => {
-    const response = await axios.get('http://localhost:3001/people')
-    setPeople(response.data)
+    try {
+      const response = await axios.get('http://localhost:3001/people')
+      setPeople(response.data)
+    } catch (e) {
+      setErrorMessage(e.message)
+    }
   }
 
   const handleSubmit = async e => {
