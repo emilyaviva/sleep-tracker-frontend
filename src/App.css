@@ -1,3 +1,9 @@
-.App {
-  
+main.App {
+  width: 50rem;
+  margin: 0 auto;
+
+}
+
+.error {
+  color: red;
 }
