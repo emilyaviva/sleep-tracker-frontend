@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './PeopleList.css'
 
+import PersonSummary from '../PersonSummary'
+
 function PeopleList () {
   const [people, setPeople] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
@@ -40,10 +42,11 @@ function PeopleList () {
         </thead>
         <tbody>
           {people.map(person => (
-            <tr key={person.name}>
-              <td className='person-name'>{person.name}</td>
-              <td className='person-birthdate'>{person.birthdate}</td>
-            </tr>
+            <PersonSummary
+              key={person.id}
+              name={person.name}
+              birthdate={person.birthdate}
+            />
           ))}
         </tbody>
       </table>

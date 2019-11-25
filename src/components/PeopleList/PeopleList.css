@@ -5,7 +5,3 @@
 .PeopleList table th, td {
   min-width: 10rem;
 }
-
-.PeopleList .person-birthdate {
-  text-align: center;
-}
