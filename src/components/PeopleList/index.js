@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import useFetch from 'use-http'
 import './PeopleList.css'
 
-import PersonSummary from '../PersonSummary'
+import PeopleListPerson from '../PeopleListPerson'
 
 function PeopleList () {
   const [request, response] = useFetch('http://localhost:3001')
@@ -55,7 +55,7 @@ function PeopleList () {
         </thead>
         <tbody>
           {peopleList.map(person => (
-            <PersonSummary
+            <PeopleListPerson
               key={person.id}
               personId={person.id}
               name={person.name}

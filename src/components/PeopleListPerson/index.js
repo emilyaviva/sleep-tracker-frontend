@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from '@reach/router'
-import './PersonSummary.css'
+import './PeopleListPerson.css'
 
-const PersonSummary = ({ name, birthdate, personId }) => (
-  <tr className='PersonSummary'>
+const PeopleListPerson = ({ name, birthdate, personId }) => (
+  <tr className='PeopleListPerson'>
     <td className='person-name'>
       <Link to={`/people/${personId}`}>
         {name}
@@ -13,4 +13,4 @@ const PersonSummary = ({ name, birthdate, personId }) => (
   </tr>
 )
 
-export default PersonSummary
+export default PeopleListPerson
