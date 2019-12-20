@@ -1,21 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState, useRef } from 'react'
+import useFetch from 'use-http'
 import './PeopleList.css'
 
 import PersonSummary from '../PersonSummary'
 
 function PeopleList () {
+  const [request, response] = useFetch('http://localhost:3001')
   const [loading, setLoading] = useState(false)
-  const [people, setPeople] = useState([])
+  const [peopleList, setPeopleList] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
 
-  useEffect(() => { getPeople() }, [])
+  const mounted = useRef(false)
+  useEffect(() => {
+    if (mounted.current) return
+    mounted.current = true
+    initializePeopleList()
+  })
 
-  const getPeople = async () => {
+  const initializePeopleList = async () => {
     try {
       setLoading(true)
-      const response = await axios.get('http://localhost:3001/people')
-      setPeople(response.data)
+      const initialPeopleList = await request.get('/people')
+      if (response.ok) setPeopleList(initialPeopleList)
     } catch (e) {
       setErrorMessage(e.message)
     } finally {
@@ -26,13 +32,11 @@ function PeopleList () {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      const response = await axios.post('http://localhost:3001/people', {
+      const newPerson = await request.post('/people', {
         name: e.target.name.value,
         birthdate: e.target.birthdate.value
       })
-      if (response.status === 201) {
-        setPeople([...people, response.data])
-      }
+      if (response.ok) setPeopleList([...peopleList, newPerson])
     } catch (e) {
       setErrorMessage(e.message)
     }
@@ -50,9 +54,10 @@ function PeopleList () {
           </tr>
         </thead>
         <tbody>
-          {people.map(person => (
+          {peopleList.map(person => (
             <PersonSummary
               key={person.id}
+              personId={person.id}
               name={person.name}
               birthdate={person.birthdate}
             />
