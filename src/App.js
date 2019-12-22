@@ -5,6 +5,7 @@ import './App.css'
 import AppHeader from './components/AppHeader'
 import PeopleList from './components/PeopleList'
 import SleepPeriodsList from './components/SleepPeriodsList'
+import NotFound from './components/NotFound'
 
 const App = () => (
   <main className='App'>
@@ -12,6 +13,7 @@ const App = () => (
     <Router>
       <PeopleList path="/" />
       <SleepPeriodsList path="/people/:personId" />
+      <NotFound default />
     </Router>
   </main>
 )

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import useFetch from 'use-http'
 
-const SleepPeriodsList = ({ personId, personName }) => {
+const SleepPeriodsList = ({ personId }) => {
   const [request, response] = useFetch('http://localhost:3001')
   const [sleepPeriodsList, setSleepPeriodsList] = useState([])
 
@@ -31,7 +31,6 @@ const SleepPeriodsList = ({ personId, personName }) => {
   return (
     <>
       {request.loading && <div>Loading…</div>}
-      <h3>{personId}</h3>
       <table className='SleepPeriodsList'>
         <thead>
           <tr>
