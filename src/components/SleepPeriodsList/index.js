@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import useFetch from 'use-http'
+import { format } from 'date-fns-tz'
+import './SleepPeriodsList.css'
 
 const SleepPeriodsList = ({ personId }) => {
   const [request, response] = useFetch('http://localhost:3001')
@@ -28,6 +30,12 @@ const SleepPeriodsList = ({ personId }) => {
     if (response.ok) setSleepPeriodsList([...sleepPeriodsList, response.data])
   }
 
+  const dateFormatString = 'E PP h:mm b zzz'
+  const currentTimeZone = 'America/Los_Angeles'
+  const ourFormat = (datetime) => (
+    format(new Date(datetime), dateFormatString, { timeZone: currentTimeZone })
+  )
+
   return (
     <>
       {request.loading && <div>Loading…</div>}
@@ -43,10 +51,18 @@ const SleepPeriodsList = ({ personId }) => {
         <tbody>
           {sleepPeriodsList.map(sleepPeriod => (
             <tr key={sleepPeriod.id}>
-              <td>{sleepPeriod.started_at}</td>
-              <td>{sleepPeriod.ended_at}</td>
-              <td>{sleepPeriod.quality}</td>
-              <td>{sleepPeriod.notes}</td>
+              <td className="sleep-periods-started-at">
+                {ourFormat(sleepPeriod.started_at)}
+              </td>
+              <td className="sleep-periods-ended-at">
+                {ourFormat(sleepPeriod.ended_at)}
+              </td>
+              <td className="sleep-periods-quality">
+                {sleepPeriod.quality}
+              </td>
+              <td className="sleep-periods-notes">
+                {sleepPeriod.notes}
+              </td>
             </tr>
           ))}
         </tbody>

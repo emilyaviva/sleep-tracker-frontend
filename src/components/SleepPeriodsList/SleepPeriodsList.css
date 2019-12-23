@@ -1,3 +1,7 @@
 .SleepPeriodsList {
 
 }
+
+.SleepPeriodsList td.sleep-periods-quality {
+  text-align: center;
+}
