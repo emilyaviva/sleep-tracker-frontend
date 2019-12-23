@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import useFetch from 'use-http'
-import './PeopleList.css'
+import './PeopleList.scss'
 
 import PeopleListPerson from '../PeopleListPerson'
 

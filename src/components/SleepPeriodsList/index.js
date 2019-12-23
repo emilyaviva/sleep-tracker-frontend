@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import useFetch from 'use-http'
 import { format } from 'date-fns-tz'
-import './SleepPeriodsList.css'
+import './SleepPeriodsList.scss'
 
 const SleepPeriodsList = ({ personId }) => {
   const [request, response] = useFetch('http://localhost:3001')

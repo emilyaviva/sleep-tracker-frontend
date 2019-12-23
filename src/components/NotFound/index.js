@@ -1,5 +1,5 @@
 import React from 'react'
-import './NotFound.css'
+import './NotFound.scss'
 
 const NotFound = () => (
   <div>You seem to have hit a route that doesn't exist.</div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@reach/router'
-import './PeopleListPerson.css'
+import './PeopleListPerson.scss'
 
 const PeopleListPerson = ({ name, birthdate, personId }) => (
   <tr className='PeopleListPerson'>

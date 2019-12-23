@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@reach/router'
-import './AppHeader.css'
+import './AppHeader.scss'
 
 const AppHeader = () => (
   <Link to='/'>

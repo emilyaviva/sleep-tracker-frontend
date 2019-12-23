@@ -1,6 +1,6 @@
 import React from 'react'
 import { Router } from '@reach/router'
-import './App.css'
+import './App.scss'
 
 import AppHeader from './components/AppHeader'
 import PeopleList from './components/PeopleList'
